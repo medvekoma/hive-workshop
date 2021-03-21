@@ -1,6 +1,12 @@
 # Getting started with HDFS
 
 ```bash
+# Open shell to Hive Server
+docker exec -it cluster_hive-server_1 bash
+
+# content of the local files
+ls -la /files
+
 # Create HDFS folders
 hdfs dfs -mkdir -p hdfs:///demo/covid/daily
 hdfs dfs -mkdir -p hdfs:///demo/covid/vaccinations
