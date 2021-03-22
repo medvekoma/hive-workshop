@@ -122,3 +122,56 @@ SELECT country, birthrate - deathrate AS population_index
 FROM countries_v
 ORDER BY population_index DESC;
 ```
+
+```sql
+
+```sql
+-- Create new table in HUE
+CREATE EXTERNAL TABLE covid_vaccinations (
+  country string,
+  iso_code string,
+  day date,
+  total_vaccinations float,
+  people_vaccinated float,
+  people_fully_vaccinated float,
+  daily_vaccinations_raw float,
+  daily_vaccinations float,
+  total_vaccinations_per_hundred float,
+  people_vaccinated_per_hundred float,
+  people_fully_vaccinated_per_hundred float,
+  daily_vaccinations_per_million float,
+  vaccines string,
+  source_name string,
+  source_website string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+STORED AS TEXTFILE
+LOCATION 'hdfs:///demo/covid/vaccinations'
+TBLPROPERTIES (
+  'skip.header.line.count'='1'
+);
+
+CREATE VIEW covid_vaccinations_v AS
+SELECT
+  country,
+  iso_code,
+  cast(day as date) as day,
+  cast(total_vaccinations as float) as total_vaccinations,
+  cast(people_vaccinated as float) as people_vaccinated,
+  cast(people_fully_vaccinated as float) as people_fully_vaccinated,
+  cast(daily_vaccinations_raw as float) as daily_vaccinations_raw,
+  cast(daily_vaccinations as float) as daily_vaccinations,
+  cast(total_vaccinations_per_hundred as float) as total_vaccinations_per_hundred,
+  cast(people_vaccinated_per_hundred as float) as people_vaccinated_per_hundred,
+  cast(people_fully_vaccinated_per_hundred as float) as people_fully_vaccinated_per_hundred,
+  cast(daily_vaccinations_per_million as float) as daily_vaccinations_per_million,
+  vaccines,
+  source_name,
+  source_website
+FROM covid_vaccinations;
+
+SELECT country, day, people_fully_vaccinated_per_hundred, vaccines
+FROM covid_vaccinations_v
+WHERE day='2021-3-18'
+ORDER BY people_fully_vaccinated_per_hundred DESC;
+```

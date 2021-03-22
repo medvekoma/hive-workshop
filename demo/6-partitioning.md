@@ -45,7 +45,7 @@ SELECT
     source_name,
     source_website,
     iso_code
-FROM covid_vaccinations
+FROM covid_vaccinations_v
 WHERE iso_code < 'M';
 
 INSERT INTO vaccinations_by_country
@@ -66,7 +66,7 @@ SELECT
     source_name,
     source_website,
     iso_code
-FROM covid_vaccinations
+FROM covid_vaccinations_v
 WHERE iso_code >= 'M';
 
 -- use the partition (predicate pushdown)
@@ -117,5 +117,5 @@ SELECT
     source_website,
     year(day) as year,
     month(day) as month
-FROM covid_vaccinations;
+FROM covid_vaccinations_v;
 ```
