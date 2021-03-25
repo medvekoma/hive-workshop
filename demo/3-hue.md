@@ -1,0 +1,16 @@
+# HUE
+
+User interface to Hadoop
+
+http://localhost:8888 (See exposed port in [docker-compose.yml](../cluster/docker-compose.yml))
+
+## Files - HDFS
+
+* Browse HDFS files
+* See file permissions
+
+## Tables - Hive
+
+* Browse existing Hive tables
+* Open in browser, sample
+* Run Hive queries (code completion)
