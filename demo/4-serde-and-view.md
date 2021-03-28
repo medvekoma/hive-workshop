@@ -172,6 +172,6 @@ FROM covid_vaccinations;
 
 SELECT country, day, people_fully_vaccinated_per_hundred, vaccines
 FROM covid_vaccinations_v
-WHERE day='2021-3-18'
+WHERE day='2021-3-27'
 ORDER BY people_fully_vaccinated_per_hundred DESC;
 ```

@@ -11,7 +11,7 @@ hive
 ```
 
 ```sql
-# Create external table
+-- Create external table
 CREATE EXTERNAL TABLE covid_daily (
   day date,
   country string,
