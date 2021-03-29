@@ -11,7 +11,7 @@ hive
 ```
 
 ```sql
-# Create external table
+-- Create external table
 CREATE EXTERNAL TABLE covid_daily (
   day date,
   country string,
@@ -29,7 +29,7 @@ TBLPROPERTIES (
   'skip.header.line.count'='1'
 );
 
-# Test data with queries
+-- Test data with queries
 SELECT * FROM covid_daily 
 WHERE country='Hungary' 
 ORDER BY day DESC 
