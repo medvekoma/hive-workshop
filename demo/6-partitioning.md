@@ -1,5 +1,11 @@
 # Partitioning
 
+If you frequently query the data by the same field, you can store it in distinct files and folders.
+
+## Create partitioned table
+
+Notice that partition field does not appear among the other fields.
+
 ```sql
 -- create partitioned table
 CREATE TABLE vaccinations_by_country (
@@ -74,6 +80,10 @@ SELECT *
 FROM vaccinations_by_country
 WHERE iso_code = 'HUN';
 ```
+
+## Partition by multiple fields
+
+Notice the usage of calculated fields
 
 ```sql
 CREATE TABLE vaccinations_by_month (

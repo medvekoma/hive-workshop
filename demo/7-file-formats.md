@@ -1,3 +1,5 @@
+# File formats
+
 ## Delimited
 
 ```sql
