@@ -1,5 +1,11 @@
 # Partitioning
 
+If you frequently query the data by the same field, you can store it in distinct files and folders.
+
+## Create partitioned table
+
+Notice that partition field does not appear among the other fields.
+
 ```sql
 -- create partitioned table
 CREATE TABLE vaccinations_by_country (
@@ -23,8 +29,8 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
 -- enable dynamic partitioning
-set hive.exec.dynamic.partition=true;    
-set hive.exec.dynamic.partition.mode=nonstrict;  
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
 
 -- insert data (in two steps for memory reasons)
 INSERT INTO vaccinations_by_country
@@ -68,12 +74,22 @@ SELECT
     iso_code
 FROM covid_vaccinations_v
 WHERE iso_code >= 'M';
+```
 
+Browse the files located at `hdfs:///user/hive/warehouse`
+* Internal table
+* Partitioned into distinct folders by partition field
+
+```sql
 -- use the partition (predicate pushdown)
 SELECT * 
 FROM vaccinations_by_country
 WHERE iso_code = 'HUN';
 ```
+
+## Partition by multiple fields
+
+Notice the usage of calculated fields
 
 ```sql
 CREATE TABLE vaccinations_by_month (
@@ -119,3 +135,5 @@ SELECT
     month(day) as month
 FROM covid_vaccinations_v;
 ```
+
+Browse the HDFS files again at `hdfs:///user/hive/warehouse`

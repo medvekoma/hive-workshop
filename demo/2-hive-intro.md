@@ -1,5 +1,7 @@
 # Introduction to HIVE
 
+Get familiar with the data in the [cluster/files](../cluster/files) folder.
+
 ## Creating Tables
 
 ```bash
@@ -41,6 +43,7 @@ LIMIT 10;
 Backed by a RDBMS that stores the schemas
 
 ```bash
+# Quit hive CLI if needed (Ctrl+D)
 # Quit Hive Server CLI if needed (Ctrl+D)
 
 # Open shell to the metastore DB

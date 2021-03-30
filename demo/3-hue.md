@@ -12,5 +12,5 @@ http://localhost:8888 (See exposed port in [docker-compose.yml](../cluster/docke
 ## Tables - Hive
 
 * Browse existing Hive tables
-* Open in browser, sample
-* Run Hive queries (code completion)
+* Check structure and sample data (Right click table, `Open in Browser`)
+* Run Hive queries (Observe code completion)

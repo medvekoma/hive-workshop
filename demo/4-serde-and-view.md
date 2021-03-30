@@ -47,7 +47,7 @@ Custom code for parsing lines
 
 ```sql
 -- drop existing table
-DROP TABLE countries
+DROP TABLE countries;
 
 -- create new table with SERDE
 CREATE EXTERNAL TABLE countries (
@@ -78,9 +78,12 @@ LOCATION 'hdfs:///demo/countries'
 TBLPROPERTIES (
   'skip.header.line.count'='1'
 );
+
+-- Test data
+SELECT * FROM countries ORDER BY area_sq_mi DESC;
 ```
 
-Observe the result in the browser
+What's wrong? Observe the result in the browser
 * All fields are strings :( -- documented issue in OpenCSVSerde
 
 # Creating Views
@@ -118,12 +121,13 @@ Browse table
 
 ```sql
 -- test view
+SELECT * FROM countries_v ORDER BY area_sq_mi DESC;
+
+-- calculated fields
 SELECT country, birthrate - deathrate AS population_index 
 FROM countries_v
 ORDER BY population_index DESC;
 ```
-
-```sql
 
 ```sql
 -- Create new table in HUE
@@ -172,6 +176,6 @@ FROM covid_vaccinations;
 
 SELECT country, day, people_fully_vaccinated_per_hundred, vaccines
 FROM covid_vaccinations_v
-WHERE day='2021-3-27'
+WHERE day='2021-3-28'
 ORDER BY people_fully_vaccinated_per_hundred DESC;
 ```

@@ -18,3 +18,9 @@ docker exec -it cluster_hive-server_1 bash
 # Terminate cluster
 docker-compose down
 ```
+
+## Test data
+
+The [files](files) folder contains test data. This folder is mapped as a volume to the 
+docker container `cluster_hive-server_1`, so all its files will be available in the
+`/files` folder inside the container.
