@@ -22,6 +22,9 @@ hdfs dfs -ls hdfs://namenode/demo/
 hdfs dfs -copyFromLocal /files/covid_daily.csv hdfs:///demo/covid/daily
 hdfs dfs -copyFromLocal /files/country_vaccinations.csv hdfs:///demo/covid/vaccinations
 hdfs dfs -copyFromLocal /files/countries.csv hdfs:///demo/countries
+
+# List all HDFS files recursively
+hdfs dfs -ls -R hdfs:///demo
 ```
 
 [List of HDFS commands](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
